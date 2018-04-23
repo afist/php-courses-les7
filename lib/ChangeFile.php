@@ -1,8 +1,8 @@
 <?php
 
-namespace lib\ReadFile;
+namespace lib\ChangeFile;
 
-class ReadFile
+class ChangeFile
 {
     private $_file_way;
 
@@ -18,6 +18,10 @@ class ReadFile
     public function readFileJson()
     {
         return json_decode(file_get_contents($this->_file_way), true);
+    }
+    public function writeFilePhpToJson($arr)
+    {
+        file_put_contents($this->_file_way, json_encode($arr, true));
     }
 
     /**
@@ -35,8 +39,6 @@ class ReadFile
     {
         $this->_file_way = $file_way;
     }
-
-
 }
 
 // $file = '1.txt';

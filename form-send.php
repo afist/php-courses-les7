@@ -10,9 +10,15 @@
  * @link     https://mysite.ua
  */
 
+define("FILE_QUESTION", "question.json");
+define("FILE_ANSWER", "answer.json");
+
 require_once 'lib\FormProcessing.class.php';
-require_once 'lib\ReadFile.class.php';
-require_once 'lib\CurrencyConverter.class.php';
+require_once 'lib\ChangeFile.php';
+require_once 'lib\Question.php';
+require_once 'lib\Answer.php';
+
+
 // require_once 'lib\WriteToFile.class.php';
 
 // $vendorDir = dirname(dirname(__FILE__));
@@ -24,23 +30,49 @@ require_once 'lib\CurrencyConverter.class.php';
 // );
 
  use lib\FormProcessing\FormProcessing;
- use lib\ReadFile\ReadFile;
- use lib\CurrencyConverter\CurrencyConverter;
+ use lib\ChangeFile\ChangeFile;
+ use lib\Question\Question;
 
- // use lib\WriteToFile as write;
-$a = [01=>"tu vasa?", 02=>"a esli naydu?"];
-$b = [01=>"da", 02=>"net"];
-$arr = [1, 2, 3, 4, 5, 6, 677, 8, 9, 29];
+ // use lib\Question\Answer;
+ session_start();
+$fileQuestion = new ChangeFile(FILE_QUESTION);
+$_SESSION['question'] = $fileQuestion->readFileJson();
 
-//$start = $_POST[start];
-$random = random_int(0,10);
-$a = $arr[$random];
+$fileAnswer = new ChangeFile(FILE_ANSWER);
+$array2 = $fileAnswer->readFileJson();
+var_dump($_SESSION['question']);
 
-file_put_contents ("1.txt",$a.",",FILE_APPEND);
-//echo $a;
-$arr1 = file_get_contents("1.txt");
-$arr2 = explode(",", $arr1);
- var_dump($arr2);
+$question = new Question($_SESSION['question']);
+$a = $question->getQuestion();
+$idQuestion = $question->getIdQuestion();
+// unset($_SESSION['question']);
+echo "<br>";
+echo "<br>";
+
+$_SESSION['question'] = $question->deleteQuestion();
+
+// if (!isset($_SESSION['count'])) {
+//     $_SESSION['count'] = 0;
+// } else {
+//     $_SESSION['count']++;
+// }
+var_dump($_SESSION['question']);
+
+
+// echo $a;
+// $array = $question->deleteQuestion();
+// $fileQuestion->writeFilePhpToJson($array);
+
+
+
+// var_dump($file);
+// $random = random_int(0, 10);
+// $a = $arr[$random];
+
+// file_put_contents("1.txt", $a.",", FILE_APPEND);
+// $arr1 = file_get_contents("1.txt");
+// $arr2 = explode(",", $arr1);
+//  var_dump($arr2);
 
 
 

@@ -8,6 +8,7 @@ $(".btn-main").click(function(event){
         type: "post",
         data: serializedData,
         success(a){
+
             $('#question').html(a);
 
         }
