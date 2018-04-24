@@ -50,7 +50,7 @@ if (empty($_SESSION['question'])) {
 }
 
 $question = new Question($_SESSION['question']);
-$a = $question->getQuestion();
-echo $a;
+$questionWrite = $question->getQuestion();
+echo $questionWrite;
 $_SESSION['question'] = $question->deleteQuestion();
 $_SESSION['answerId'] = $question->getIdQuestion();
