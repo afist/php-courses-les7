@@ -21,6 +21,7 @@ require_once 'lib\Question.php';
 
 session_start();
 if (!empty($_POST['start'])) {
+    $_SESSION['start'] = microtime(true);
     $fileQuestion = new ChangeFile(FILE_QUESTION);
     $_SESSION['question'] = $fileQuestion->readFileJson();
 
@@ -44,7 +45,8 @@ if (!empty($_POST['answer'])) {
 }
 
 if (empty($_SESSION['question'])) {
-    echo "Pravilnux otvetov : ".$_SESSION['count'];
+    $timeEnd = number_format(microtime(true) - $_SESSION['start']);
+    echo "Pravilnux otvetov : ".$_SESSION['count']."; Vrema testa: ".$timeEnd." s";
     unset($_SESSION['answerId']);
     exit();
 }
