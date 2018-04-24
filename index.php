@@ -30,21 +30,19 @@
                     <div role="tabpanel" class="tab-pane fade in active">
                         <form action="">
                         <div class="form-group">
-                            <button type="submit" class="btn btn-default btn-main">Початы тест</button>
+                            <button type="submit" class="btn btn-default btn-main">Почати тест</button>
                         </div>
                             <input type="hidden" name="start" value="1">
                         </form>
-                        <form class="form-horizontal" id="form">
+                        <form class="form-horizontal" id="form" style="display: none;">
 
                             <div class="form-group">
-                                <label>Тут будет вопрос!
-                                </label>
                                 <div class="form-control" id="question">aaaa?</div>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-default btn-form">Так</button>
-                                <button type="submit" class="btn btn-default btn-form">Ні</button>
+                                <button type="submit" class="btn btn-default btn-form1">Так</button>
+                                <button type="submit" class="btn btn-default btn-form2">Ні</button>
 
                             </div>
                         </form>
