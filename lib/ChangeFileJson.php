@@ -1,18 +1,14 @@
 <?php
 
-namespace lib\ChangeFile;
+namespace lib\ChangeFileJson;
 
-class ChangeFile
+class ChangeFileJson
 {
     private $_file_way;
 
     public function __construct($file_way)
     {
         $this->_file_way = $file_way;
-    }
-    private function readFile()
-    {
-        return file_get_contents($this->_file_way);
     }
 
     public function readFileJson()
@@ -40,8 +36,3 @@ class ChangeFile
         $this->_file_way = $file_way;
     }
 }
-
-// $file = '1.txt';
-// header('Content-Type: txt');
-// header('Content-Disposition: attachment; filename="1.txt"');
-// readfile($file);
